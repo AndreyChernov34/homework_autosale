@@ -6,6 +6,7 @@ import com.javaacademy.homework_autosale.dto.AnnouncementDto;
 import com.javaacademy.homework_autosale.entity.Announcement;
 import com.javaacademy.homework_autosale.service.ServiceAnnouncement;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/auto")
+@Slf4j
 public class AutoController {
     private final ServiceAnnouncement serviceAnnouncement;
 
@@ -45,6 +47,7 @@ public class AutoController {
      */
     @RequestMapping("/{id}")
     public Announcement getAutobyId(@PathVariable Integer id) {
+        log.info(String.valueOf(id));
         return serviceAnnouncement.getById(id);
     }
 

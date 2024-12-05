@@ -5,6 +5,7 @@ import com.javaacademy.homework_autosale.Color;
 import com.javaacademy.homework_autosale.dto.AnnouncementDto;
 import com.javaacademy.homework_autosale.entity.Announcement;
 import com.javaacademy.homework_autosale.repository.AnnouncementRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +17,10 @@ import java.util.List;
  */
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class ServiceAnnouncement {
     private Integer counter = 0;
-    private AnnouncementRepository announcementRepository;
+    private final AnnouncementRepository announcementRepository;
 
     /**
      * Создание нового объявления
@@ -30,6 +32,7 @@ public class ServiceAnnouncement {
         Announcement announcement = new Announcement(counter, announcementDto.getBrand(), announcementDto.getColor(),
                 announcementDto.getPrice());
         announcementRepository.save(announcement);
+        log.info(announcement.toString());
     }
 
     /**

@@ -23,7 +23,7 @@ public class InitTestServiceAnnouncement {
     private static final BigDecimal PRICE1 = BigDecimal.valueOf(750000);
     private static final BigDecimal PRICE2 = BigDecimal.valueOf(1500000);
     private static final BigDecimal PRICE3 = BigDecimal.valueOf(3550000);
-    @Autowired
+
     private final ServiceAnnouncement serviceAnnouncement;
 
     @PostConstruct
@@ -34,8 +34,8 @@ public class InitTestServiceAnnouncement {
     }
 
     public void save(Brand brand, Color color, BigDecimal price) {
-        AnnouncementDto announcement = new AnnouncementDto(brand, color, price);
-        serviceAnnouncement.save(announcement);
+        AnnouncementDto announcementDto = new AnnouncementDto(brand, color, price);
+        serviceAnnouncement.save(announcementDto);
     }
 
 }
