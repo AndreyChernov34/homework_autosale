@@ -3,7 +3,6 @@ package com.javaacademy.homework_autosale.service;
 import com.javaacademy.homework_autosale.Brand;
 import com.javaacademy.homework_autosale.Color;
 import com.javaacademy.homework_autosale.dto.AnnouncementDto;
-import com.javaacademy.homework_autosale.entity.Announcement;
 import com.javaacademy.homework_autosale.repository.AnnouncementRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
