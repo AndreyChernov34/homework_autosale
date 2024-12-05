@@ -6,7 +6,6 @@ import com.javaacademy.homework_autosale.dto.AnnouncementDto;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -28,12 +27,12 @@ public class InitTestServiceAnnouncement {
 
     @PostConstruct
     public void init() {
-        save(Brand.FORD, Color.BLACK, PRICE1);
-        save(Brand.BMW, Color.BLACK, PRICE2);
-        save(Brand.BMW, Color.WHITE, PRICE3);
+        saveDto(Brand.FORD, Color.BLACK, PRICE1);
+        saveDto(Brand.BMW, Color.BLACK, PRICE2);
+        saveDto(Brand.BMW, Color.WHITE, PRICE3);
     }
 
-    public void save(Brand brand, Color color, BigDecimal price) {
+    public void saveDto(Brand brand, Color color, BigDecimal price) {
         AnnouncementDto announcementDto = new AnnouncementDto(brand, color, price);
         serviceAnnouncement.save(announcementDto);
     }

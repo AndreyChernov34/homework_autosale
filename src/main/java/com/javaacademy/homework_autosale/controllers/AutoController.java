@@ -58,6 +58,7 @@ public class AutoController {
      */
     @GetMapping
     public List<Announcement> getAllAuto() {
+        log.info("getall");
         return serviceAnnouncement.getAll();
     }
 
