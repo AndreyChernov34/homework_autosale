@@ -1,6 +1,7 @@
 package com.javaacademy.homework_autosale.repository;
 
 import com.javaacademy.homework_autosale.entity.Announcement;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import java.util.Map;
  * Репозиторий объявлений
  */
 @Component
+@Slf4j
 public class AnnouncementRepository {
     public Map<Integer, Announcement> announcementMap = new HashMap<>();
 

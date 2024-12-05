@@ -7,7 +7,6 @@ import com.javaacademy.homework_autosale.entity.Announcement;
 import com.javaacademy.homework_autosale.repository.AnnouncementRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -33,7 +32,6 @@ public class ServiceAnnouncement {
         Announcement announcement = new Announcement(counter, announcementDto.getBrand(), announcementDto.getColor(),
                 announcementDto.getPrice());
         announcementRepository.save(announcement);
-        log.info(announcement.toString());
     }
 
     /**
@@ -54,6 +52,7 @@ public class ServiceAnnouncement {
      * @return список всех объявлений
      */
     public List<Announcement> getAll() {
+
         if (!announcementRepository.getAll().isEmpty()) {
             return announcementRepository.getAll();
         } else {
@@ -81,10 +80,19 @@ public class ServiceAnnouncement {
      */
     public List<Announcement> getByParams(Brand brand, Color color,
                                           BigDecimal price) {
-        return announcementRepository.getAll().stream()
-                .filter(announcement -> (brand == null || announcement.getBrand() == brand))
-                .filter(announcement -> (color == null || announcement.getColor() == color))
-                .filter(announcement -> (price == null || (announcement.getPrice().compareTo(price)) == 0))
-                .toList();
+
+        List<Announcement> result = announcementRepository.getAll();
+
+        if (brand != null) {
+            result = result.stream().filter(announcement -> (announcement.getBrand() == brand)).toList();
+        }
+        if (color != null) {
+            result = result.stream().filter(announcement -> (announcement.getColor() == color)).toList();
+        }
+        if (price != null) {
+            result = result.stream().filter(announcement -> (announcement.getPrice().compareTo(price) == 0)).toList();
+        }
+        return result;
+
     }
 }

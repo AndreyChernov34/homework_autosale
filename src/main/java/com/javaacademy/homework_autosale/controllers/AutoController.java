@@ -7,7 +7,6 @@ import com.javaacademy.homework_autosale.entity.Announcement;
 import com.javaacademy.homework_autosale.service.ServiceAnnouncement;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Контроллер
  */
-@Controller
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("/auto")
 @Slf4j
@@ -47,7 +47,6 @@ public class AutoController {
      */
     @RequestMapping("/{id}")
     public Announcement getAutobyId(@PathVariable Integer id) {
-        log.info(String.valueOf(id));
         return serviceAnnouncement.getById(id);
     }
 
@@ -58,7 +57,6 @@ public class AutoController {
      */
     @GetMapping
     public List<Announcement> getAllAuto() {
-        log.info("getall");
         return serviceAnnouncement.getAll();
     }
 

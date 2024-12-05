@@ -3,6 +3,8 @@ package com.javaacademy.homework_autosale.service;
 import com.javaacademy.homework_autosale.Brand;
 import com.javaacademy.homework_autosale.Color;
 import com.javaacademy.homework_autosale.dto.AnnouncementDto;
+import com.javaacademy.homework_autosale.entity.Announcement;
+import com.javaacademy.homework_autosale.repository.AnnouncementRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,12 +26,17 @@ public class InitTestServiceAnnouncement {
     private static final BigDecimal PRICE3 = BigDecimal.valueOf(3550000);
 
     private final ServiceAnnouncement serviceAnnouncement;
+    private final AnnouncementRepository announcementRepository;
 
     @PostConstruct
     public void init() {
         saveDto(Brand.FORD, Color.BLACK, PRICE1);
         saveDto(Brand.BMW, Color.BLACK, PRICE2);
         saveDto(Brand.BMW, Color.WHITE, PRICE3);
+        saveDto(Brand.KIA, Color.WHITE, PRICE1);
+        AnnouncementDto announcementDto = new AnnouncementDto();
+        announcementDto.setBrand(Brand.BMW);
+        serviceAnnouncement.save(announcementDto);
     }
 
     public void saveDto(Brand brand, Color color, BigDecimal price) {
